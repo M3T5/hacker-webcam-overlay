@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hacker Webcam Frame</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="cam-frame">
+    <video id="webcam" autoplay playsinline></video>
+
+    <div class="hud">
+        <span>ACCESS GRANTED ████████ 100%</span>
+    </div>
+</div>
+
+<script>
+const video = document.getElementById("webcam");
+
+async function startWebcam(){
+    try{
+        const stream = await navigator.mediaDevices.getUserMedia({video:true});
+        video.srcObject = stream;
+    }catch(err){
+        console.log("Webcam error:", err);
+    }
+}
+
+startWebcam();
+</script>
+
+</body>
+</html>
